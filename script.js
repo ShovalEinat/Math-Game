@@ -1,4 +1,10 @@
 var num1, num2, operator, answer, maxNum, timeLeft, timer, score, numQuestions, numCorrect;
+let time = 60;
+var sheesh = new Audio("sheesh.mp3");
+var ohMyGod = new Audio("ohMyGod.mp3");
+var wow = new Audio("wowww.mp3");
+var windowsError = new Audio("windowsError.mp3");
+var bruh = new Audio("bruh.mp3");
 
 function generateQuestion() {
   num1 = Math.floor(Math.random() * maxNum) + 1;
@@ -10,7 +16,7 @@ function generateQuestion() {
 }
 
 function startGame() {
-  timeLeft = 60;
+  timeLeft = time;
   score = 0;
   numQuestions = 0;
   numCorrect = 0;
@@ -55,7 +61,7 @@ function startTimer() {
 }
 
 function reStart() {
-  timeLeft = 60;
+  timeLeft = time;
   score = 0;
   numQuestions = 0;
   numCorrect = 0;
@@ -84,33 +90,31 @@ document.addEventListener("keydown", function(event) {
   }
 });
 
+
 function endGame() {
   clearInterval(timer);
   document.getElementById("game-container").style.display = "none";
-  document.getElementById("timer").style.display = "none";
-  document.getElementById("score").style.display = "none";
-  document.getElementById("select").style.display = "none";
+  document.getElementById("back2").style.display = "block";
   numQuestions = numQuestions -1;
   var percentage = numCorrect / numQuestions * 100;
   var resultText = document.createElement("p");
+  setTimeout(function() {
+    if (score == 0, numQuestions == 0) {
+      resultText.innerHTML = "Game Over! and you didn't even played";
+    }
+}, 00001);      
   resultText.innerHTML = "Game Over! Your final score is " + score + " out of " + numQuestions + " (" + percentage.toFixed(2) + "%).";
   document.getElementById("result-container").appendChild(resultText);
-  document.getElementById("start-btn").style.display = "block";
-
+  document.getElementById("mathGame").style.height = "400px";
   if (score > 25) {
-    var sheesh = new Audio("sheesh.mp3");
     sheesh.play();
   } else if (score > 10) {
-    var ohMyGod = new Audio("ohMyGod.mp3");
     ohMyGod.play();
   } else if (score > 0) {
-    var wow = new Audio("wowww.mp3");
     wow.play();
   } else if (score > -10) {
-    var windowsError = new Audio("windowsError.mp3");
     windowsError.play();
   } else {
-    var bruh = new Audio("bruh.mp3");
     bruh.play();
   }
 }
@@ -143,4 +147,21 @@ document.getElementById("title").addEventListener("click", function() {
     }, 6000);
     
   }
+});
+
+let range = document.getElementById("range");
+let rangeValue = document.getElementById("rangeValue");
+
+range.addEventListener("input", () => {
+    rangeValue.innerHTML = "Time will Be : " + range.value;
+});
+
+
+const muteCheckbox = document.getElementById("mute-audio");
+muteCheckbox.addEventListener("change", function() {
+  sheesh.muted = this.checked;
+  ohMyGod.muted = this.checked;
+  wow.muted = this.checked;
+  windowsError.muted = this.checked;
+  bruh.muted = this.checked;
 });
