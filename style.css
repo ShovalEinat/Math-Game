@@ -16,14 +16,18 @@ h1 {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
+
+#range{
+    width: 300px;
+}
   
 #question {
-    font-size: 24px;
+    font-size: 30px;
     margin-bottom: 20px;
 }
   
 #answer {
-    font-size: 20px;
+    font-size: 30px;
     padding: 10px;
     margin-right: 10px;
     border-radius: 5px;
@@ -47,7 +51,7 @@ h1 {
     box-shadow: -3px 2px 9px 6px black;
     border-radius: 5px;
     width: 700px;
-    height: 475px;
+    height: 625px;
     margin: auto;
     top: 0;
     bottom: 0;
@@ -95,7 +99,21 @@ h1 {
     cursor: pointer;
 }
 
-#back:hover{
+#back2{
+    font-size: 40px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #000000;
+    color: #fff;
+    cursor: pointer;
+    display: none; 
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#back:hover, #back2:hover{
     background-color: #3b3b3b;
     color: rgb(255, 255, 255);
 }
@@ -119,9 +137,18 @@ h1 {
     background-color: #ff0d00;
 }
 
-#select{
+#select, #rangeValue, #timer, #score, #result{
     font-size: 35px;
 }
+
+label {
+    font-size: 35px;
+    cursor: pointer;
+}
+  
+input[type="checkbox"] {
+    transform: scale(2);
+}  
 
 #question{
     font-size: 35px;
