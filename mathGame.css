@@ -20,6 +20,10 @@ h1 {
 #range{
     width: 300px;
 }
+
+#range::-webkit-slider-thumb, #range2::-webkit-slider-thumb {
+    cursor: pointer;
+}
   
 #question {
     font-size: 30px;
